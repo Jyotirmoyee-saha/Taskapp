@@ -1,0 +1,62 @@
+<%= turbo_frame_tag "new_task" do %>
+  <%= form_with(model: task) do |form| %>
+    <% if task.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+        <ul>
+          <% task.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <%= form.label :tname, style: "display: block" %>
+      <%= form.text_field :tname %>
+    </div>
+
+    <div>
+      <%= form.label :tno, style: "display: block" %>
+      <%= form.check_box :tno %>
+    </div>
+
+    <div>
+      <%= form.select :project_id,
+        options_from_collection_for_select( @select_project, 'id', 'title'), 
+        { include_blank: 'select Project' },
+        class: 'form-control',
+        autofocus: true,
+        data: { action: "change->connectselect#loadproject",
+                "connectselect-target": 'projectselect' } %>
+    </div>
+
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+<% end %>
+
+<% if task.persisted? %>
+  <%= form_with(model: task) do |form| %>
+    <% frame_id = dom_id(task, "tname_turbo_frame") %>
+    <%= turbo_frame_tag frame_id do %>
+      <div>
+        <%= form.label :tname, style: "display: block" %>
+        <%= form.text_field :tname %>
+      </div>
+      <%= form.button "Save" %>
+    <% end %>
+  <% end %>
+
+  <%= form_with(model: task) do |form| %>
+    <% frame_id = dom_id(task, "tno_turbo_frame") %>
+    <%= turbo_frame_tag frame_id do %>
+      <div>
+        <%= form.label :tno, style: "display: block" %>
+        <%= form.check_box :tno %>
+      </div>
+      <%= form.button "Save" %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,0 +1,30 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Projects" %>
+
+<h3>Projects</h3>
+
+<div id="projects" >
+  <% @projects.each do |project| %>
+  <div id="<%= dom_id project %>" class="project-card">
+   <h6><%= project.title %></h6>
+  </div>
+    
+  <% end %>
+
+  <% if user_signed_in? && @userprojects.any? %>
+  
+   <h3>My Saved Projects</h3>
+    <% @userprojects.each do |project| %>
+   <%= render project %>
+    <h4>
+      <%= link_to "Show this project", project %>
+    </h4>
+    <%end%>
+   <% end %>
+</div>
+
+<%#= link_to "My Projects", "/managements" %>
+<%#= link_to "My tasks", "/tasks" %>
+<h3><%= link_to "New project", new_project_path %></h3>
+

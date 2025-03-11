@@ -1,0 +1,19 @@
+
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Tasks" %>
+
+<h1>Tasks</h1>
+
+<div id="tasks">
+  <% @tasks.each do |task| %>
+    <%= render task %>
+    <p>
+      
+    </p>
+  <% end %>
+</div>
+<%=turbo_frame_tag id ="new_task", src: new_task_path%>
+<%#=turbo_frame_tag id="new_task", src: new_task_path(project_id: @project.id) %>
+
+

@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Managements" %>
+
+<h1>Managements</h1>
+
+
+<div id="managements">
+  <% @managements.each do |management| %>
+  
+    <%= render management %>
+    <p>
+      <%#= link_to "Show this management", management %>
+    </p>
+  <% end %>
+  <%  @exceptions.each do |manage|%>
+  <p>You don't have any save project</p>
+  <%end%>
+</div>
+
+<%#= link_to "New management", new_management_path %>

@@ -1,0 +1,39 @@
+
+<div>
+<%frame_id = dom_id(task, "tname_turbo_frame")%>
+<%= form_with model: task, data: { turbo_frame: frame_id} do%>
+
+<%= turbo_frame_tag frame_id do%>
+<h4>Task:</h4>
+  <p>
+     <%= task.tname %>
+  </p>
+<%= link_to "Edit Name", edit_task_path(task)%>
+<%end%>
+<%end%>
+
+
+<%frame_id = dom_id(task, "tno_turbo_frame")%>
+<%= form_with model: task, data: { turbo_frame: frame_id} do%>
+<%= turbo_frame_tag frame_id do%>
+  <p>
+    <%= task.tno %>
+  </p>
+<%= link_to "Edit", edit_task_path(task)%>
+<%end%>
+<%end%>
+<h4>Project:</h4>
+<p>
+    <%= task.project.title %>
+  </p>
+<%= button_to "Destroy this Task", task, method: :delete %>
+</div>
+
+
+
+
+
+
+
+
+

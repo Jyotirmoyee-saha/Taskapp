@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  
+  <div class="progress">
+    <% completed_tasks = project.tasks.count { |task| task.tno } %>
+    <% total_tasks = project.tasks.count %>
+    <% progress_percentage = total_tasks > 0 ? (completed_tasks.to_f / total_tasks * 100).round : 0 %>
+    
+    <div class="progress-bar" role="progressbar" 
+         aria-valuenow="<%= progress_percentage %>" 
+         aria-valuemin="0" 
+         aria-valuemax="100" 
+         style="width:<%= progress_percentage %>%">
+      <span class="sr-only"><%= progress_percentage %>% Complete</span>
+    </div>
+  </div>
+
+<div id="<%= dom_id project %>" class="project-card">
+  
+  
+ 
+      <h3><u><b><%= project.title %></b></u></h3>
+      <% if project.tasks.any? %>
+    <div class="task-list">
+      <h5>Tasks:</h5>
+      <ul>
+        <% project.tasks.each do |task| %>
+          <li><b><%= task.tname %></b></li>
+          <%= link_to "Show task", task %>
+      </ul>
+    </div>
+    
+  <% end %>
+  <%end%>
+
+  
+
+ 
+</div>
+  
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+
