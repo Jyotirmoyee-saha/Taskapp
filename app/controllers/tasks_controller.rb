@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   before_action :set_select_project, only: %i[new create edit]
   
 
-  # GET /tasks or /tasks.js
+  # GET /tasks or /tasks.json
   def index
     @tasks = Task.all
     
