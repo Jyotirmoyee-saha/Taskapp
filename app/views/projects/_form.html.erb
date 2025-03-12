@@ -1,3 +1,4 @@
+<%= turbo_frame_tag "New Project" do %>
 <%= form_with(model: project) do |form| %>
   <% if project.errors.any? %>
     <div style="color: red">
@@ -20,3 +21,17 @@
     <%= form.submit %>
   </div>
 <% end %>
+<%end%>
+
+
+% if project.persisted? %>
+  <%= form_with(model: project) do |form| %>
+    <% frame_id = dom_id(project, "title_turbo_frame") %>
+    <%= turbo_frame_tag frame_id do %>
+     <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+      <%= form.button "Save" %>
+    <% end %>
+  <% end %>

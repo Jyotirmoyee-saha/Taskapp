@@ -25,25 +25,38 @@
     </div>
   </div>
 
-<div id="<%= dom_id project %>" class="project-card">
-  
+<%#project%>
+<div>
+<%frame_id = dom_id(project, "title_turbo_frame")%>
+<%= form_with model: project, data: { turbo_frame: frame_id} do%>
+
+<%= turbo_frame_tag frame_id do%>
   
  
       <h3><u><b><%= project.title %></b></u></h3>
+      <%= link_to "Edit Name", edit_project_path(project)%>
       <% if project.tasks.any? %>
     <div class="task-list">
       <h5>Tasks:</h5>
       <ul>
         <% project.tasks.each do |task| %>
-          <li><b><%= task.tname %></b></li>
-          <%= link_to "Show task", task %>
+          <li>
+            <b><%= task.tname %></b>
+            <%= link_to "Show Task", task_path(task), data: { turbo: false } %>
+
+
+          </li>
+          <% end %>
       </ul>
     </div>
     
-  <% end %>
+    
+        
+  <%= button_to "Destroy this Project", Project, method: :delete %>
   <%end%>
 
-  
+  <%end%>
+  <%end%>
 
  
 </div>
