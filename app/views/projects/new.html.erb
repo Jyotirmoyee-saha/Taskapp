@@ -1,11 +1,13 @@
 <% content_for :title, "New project" %>
 
-<h1>New project</h1>
+<%= turbo_frame_tag "new_project_frame" do %>
+  <h1>New project</h1>
 
-<%= render "form", project: @project %>
+  <%= render "form", project: @project %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Back to projects", projects_path %>
-</div>
+  <div>
+    <%= link_to "Back to projects", projects_path %>
+  </div>
+<% end %>

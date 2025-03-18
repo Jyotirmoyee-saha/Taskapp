@@ -36,17 +36,23 @@
       <h3><u><b><%= project.title %></b></u></h3>
       <%= link_to "Edit Name", edit_project_path(project)%>
       <% if project.tasks.any? %>
-    <div class="task-list">
-      <h5>Tasks:</h5>
-      <ul>
+    <div class="task-list h-60 w-60 flext  justify-center">
+    <table class="border-separate border border-gray-400 ... px-2 py-2">
+    <tr>
+      <th class="border border-gray-300 ... "><u><h5>Tasks:</h5></u></th>
+    </tr>
+      
         <% project.tasks.each do |task| %>
-          <li>
-            <b><%= task.tname %></b>
-            <%= link_to "Show Task", task_path(task), data: { turbo: false } %>
+          
+        <tr>
+          <td class="border border-gray-300 ..."> <b><%= task.tname %></b>
+            <%= link_to "Show", task_path(task), data: { turbo: false } %>
+          </td>
+        </tr>
 
-
-          </li>
+          
           <% end %>
+      </table>
       </ul>
     </div>
     
@@ -56,6 +62,7 @@
   <%end%>
 
   <%end%>
+  
   <%end%>
 
  
