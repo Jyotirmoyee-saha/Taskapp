@@ -1,5 +1,5 @@
-
-<div>
+</br></br></br>
+<div class= "">
 <%frame_id = dom_id(task, "tname_turbo_frame")%>
 <%= form_with model: task, data: { turbo_frame: frame_id} do%>
 
@@ -26,7 +26,9 @@
 <p>
     <%= task.project.title %>
   </p>
-<%= button_to "Destroy this Task", task, method: :delete %>
+</br><%= button_to "Destroy this Task", task, method: :delete %>
+
+
 </div>
 
 

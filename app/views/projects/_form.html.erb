@@ -24,7 +24,7 @@
 <%end%>
 
 
-% if project.persisted? %>
+<% if project.persisted? %>
   <%= form_with(model: project) do |form| %>
     <% frame_id = dom_id(project, "title_turbo_frame") %>
     <%= turbo_frame_tag frame_id do %>
@@ -35,3 +35,4 @@
       <%= form.button "Save" %>
     <% end %>
   <% end %>
+  <%end%>

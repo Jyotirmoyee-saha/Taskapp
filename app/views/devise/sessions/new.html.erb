@@ -1,7 +1,10 @@
-<h2>Log in</h2>
+<div class= "flex items-center justify-center ...">
+<div class="box-border size-80 border-10 p-4 ... bg-slate-300 ">
+
+<h2 class="italic" ><u>Log in</u></h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
+  <div class="field" >
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
@@ -10,7 +13,9 @@
     <%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
-
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+<% end %>
   <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>
@@ -18,9 +23,13 @@
     </div>
   <% end %>
 
-  <div class="actions">
+  <div class="actions bg-slate-500 h-12 w-full"  >
     <%= f.submit "Log in" %>
   </div>
+  
 <% end %>
+
+</div>
+</div>
 
 <%= render "devise/shared/links" %>

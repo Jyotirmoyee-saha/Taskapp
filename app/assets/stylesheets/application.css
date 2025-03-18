@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   --primary-color: #4a90e2;       /* Main brand color */
   --secondary-color: #50e3c2;    /* Accent color */
